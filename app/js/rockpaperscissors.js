@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
-// 'use strict';
+'use strict';
 
 function getInput() {
     console.log("Please select either 'rock', 'paper', or 'scissors' to play.");
