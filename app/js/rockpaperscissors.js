@@ -4,7 +4,7 @@
 // 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
+    console.log("Please select either 'rock', 'paper', or 'scissors' to play.");
     return prompt();
 }
 function randomPlay() {
@@ -35,12 +35,13 @@ function getComputerMove(move) {
     return move || randomPlay();
 }
 
-function getWinner(playerMove,computerMove) {
+function getWinner(playerMove, computerMove) {
     var winner;
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
+    // All possible combinations of plays
     if (playerMove === 'rock' && computerMove === 'paper') {
         winner = 'computer';
     } else if (playerMove === 'rock' && computerMove === 'scissors') {
@@ -70,11 +71,10 @@ function playToFive() {
 
     // as long as neither player or computer has won five times, continue play
     while (playerWins < 5 && computerWins < 5) {
-        // get player's last move
+        // get player's move
         var playerMove = getPlayerMove();
-        // automatic test
-        // var playerMove = getPlayerMove(randomPlay());
-        // get computer's last move
+        // for testing use - var playerMove = getPlayerMove(randomPlay());
+        // get computer's move
         var computerMove = getComputerMove();
         // determine winner by calling getWinner function and passing in the two moves
         var winner = getWinner(playerMove, computerMove);
@@ -83,17 +83,18 @@ function playToFive() {
             playerWins ++;
             console.log("Player played " + playerMove + " while computer played " + computerMove);
             console.log("Player won this round.");
-        // if the winner is the computer, add 1 to computerWins
+            // else if the winner is the computer, add 1 to computerWins
         } else if (winner === 'computer') {
             computerWins ++;
             console.log("Player played " + playerMove + " while computer played " + computerMove);
             console.log("Computer has won this round.");
+        // else print moves that player and computer played and declare a tie
         } else {
             console.log("Player played " + playerMove + " while computer played " + computerMove);
             console.log("Player and computer have tied.");
         }
     }
-    console.log("The player has a score of " + playerWins + " while the computer a score of" + computerWins + " .");
+    console.log("The player has a score of " + playerWins + " while the computer a score of " + computerWins + " .");
     return [playerWins, computerWins];
 }
 
